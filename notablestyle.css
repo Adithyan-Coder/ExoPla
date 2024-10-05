@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Remove default margin */
+    position: relative; /* Make body position relative for positioning */
+}
+
+.image-container {
+    position: relative; /* Position relative for overlaying text */
+    width: 100%; /* Full width */
+}
+
+.image-container img {
+    width: 100%; /* Image covers full width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.heading-container {
+    position: absolute; /* Position text absolutely over the image */
+    top: 25%; /* Adjust vertical position */
+    left: 5%; /* Align text to the left */
+    color: white; /* Text color */
+    font-size: 2rem; /* Font size for heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for better visibility */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.heading-container:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.description {
+    position: absolute; /* Position description absolutely */
+    top: 30%; /* Adjust vertical position */
+    left: 1%; /* Align text to the left */
+    color: white; /* Text color */
+    font-size: 1.2rem; /* Font size for description */
+    text-shadow: 2px 1px 2px rgba(107, 9, 102, 0.7); /* Shadow for better visibility */
+    max-width: 600px; /* Maximum width for better readability */
+    display: none; /* Hidden by default */
+    opacity: 0; /* Start with invisible text */
+    transition: opacity 0.5s ease; /* Fade animation */
+    line-height: 1.5; /* Control line height for paragraph */
+}
+
+.description.visible {
+    display: block; /* Show description when toggled */
+    opacity: 1; /* Fade in */
+}

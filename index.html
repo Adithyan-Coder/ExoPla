@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExoPla</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* CSS Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            max-width: 100%; /* Ensures the image fits well within the container */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto; /* Maintain the aspect ratio */
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 20%; /* Adjusted vertical position */
+            left: 50%; /* Center the text horizontally */
+            transform: translate(-50%, -50%); /* Offset to center text exactly */
+            color: white; /* Make the text visible */
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better visibility */
+            font-weight: bold;
+        }
+
+        .overlay-paragraph {
+            position: absolute;
+            top: 40%; /* Adjusted vertical position */
+            left: 50%; /* Center the paragraph horizontally */
+            transform: translate(-50%, -50%); /* Offset to center text exactly */
+            color: white; /* Make the paragraph visible */
+            font-size: 1.2rem; /* Font size for the paragraph */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add shadow for better visibility */
+            max-width: 600px; /* Maximum width for better readability */
+            margin: 0 auto; /* Centering */
+        }
+
+        /* CSS for Action Button */
+        .button-container {
+            text-align: center; /* Center buttons */
+            margin-top: 20px; /* Space above buttons */
+        }
+
+        .action-button {
+            background-color: #007BFF; /* Button background color */
+            color: white; /* Text color */
+            padding: 10px 20px; /* Button size */
+            font-size: 1rem; /* Font size */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer on hover */
+            margin: 5px; /* Space between buttons */
+            text-decoration: none; /* Remove underline for anchor tags */
+            display: inline-block; /* To make anchors behave like buttons */
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: #f9f9f9; /* Light background */
+            min-width: 160px; /* Minimum width */
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            z-index: 1; /* On top */
+        }
+
+        .dropdown-content a {
+            color: black; /* Text color */
+            padding: 12px 16px; /* Button padding */
+            text-decoration: none; /* No underline */
+            display: block; /* Make it block */
+            width: 100%; /* Full width */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd; /* Hover effect */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* Show on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="https://science.nasa.gov/wp-content/uploads/2023/10/directimaging-graphic.gif?w=1536&format=webp&crop=1" alt="Exoplanet Exploration GIF">
+        <h1 class="overlay-text">CHRONICLES OF EXOPLANET EXPLORATION</h1>
+        <p class="overlay-paragraph">An exoplanet is any planet beyond our solar system. Most of them orbit other stars, but some free-floating exoplanets, called rogue planets, are untethered to any star. We’ve confirmed more than 5,600 exoplanets out of the billions that we believe exist.</p>
+    </div>
+
+    <!-- Action Buttons Below the GIF -->
+    <div class="button-container">
+        <div class="dropdown">
+            <button class="action-button">Learn More</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="alert('Discoveries Clicked!')">Discoveries</a>
+                <a href="exoplanet.html">Types of Exoplanets</a> <!-- Redirects to Types of Exoplanets page -->
+                <a href="notable.html">Notable Exoplanets</a>
+                
+                <a href="#" onclick="alert('Ongoing Researches Clicked!')">Ongoing Researches</a>
+            </div>
+        </div>
+        <a href="https://science.nasa.gov/exoplanets/discoveries-dashboard/" class="action-button">Nasa Discoveries Dashboard</a> <!-- Updated Census Button -->
+        <button class="action-button" onclick="alert('Contact Us Clicked!')">Contact Us</button>
+        <a href="https://example.com" class="action-button">Visit Our Site</a>
+    </div>
+</body>
+</html>
+
+

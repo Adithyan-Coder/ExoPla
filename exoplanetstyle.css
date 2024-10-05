@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTd1NnB6b3c4Z3J6ZGlrZHRoZ2l1YmQycXVtZTV5M2VzYnY3cnNjNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4vYBhbouypGeU5kDkM/giphy.webp'); /* Use your GIF URL */
+    background-size: cover; /* Ensure the background covers the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    height: 100vh; /* Full height of the viewport */
+}
+
+.container {
+    display: flex; /* Use flexbox to align items side by side */
+    justify-content: center; /* Center content */
+    align-items: flex-start; /* Align items to the top */
+    padding: 20px; /* Add some padding */
+    backdrop-filter: blur(5px); /* Optional: Blur the background */
+    color: white; /* Set text color to white for better visibility */
+}
+
+.text-container {
+    flex: 1; /* Allow text container to take available space */
+    margin-right: 20px; /* Add space between text and GIF */
+    z-index: 1; /* Ensure text appears above the background */
+}
+
+.gif-container {
+    flex: 0 0 auto; /* Prevent GIF container from growing */
+    max-width: 50%; /* Limit the maximum width of the GIF */
+}
+
+.exoplanet-types {
+    list-style: none; /* Remove default list style */
+    padding: 0; /* Remove default padding */
+}
+
+.exoplanet-types li {
+    margin-bottom: 15px; /* Space between list items */
+    position: relative; /* Required for tooltip positioning */
+}
+
+.info-button {
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-left: 10px; /* Space between text and info icon */
+}
+
+.tooltip,
+.button-tooltip {
+    display: none; /* Hide tooltips by default */
+    position: absolute; /* Position tooltips absolutely */
+    background: rgba(0, 0, 0, 0.8); /* Dark background for tooltips */
+    color: #fff; /* White text for tooltips */
+    padding: 5px; /* Padding inside tooltips */
+    border-radius: 5px; /* Rounded corners for tooltips */
+    z-index: 100; /* Ensure tooltips appear above other content */
+}
+
+.info-button:hover + .tooltip,
+.info-button:hover + .tooltip + .button-tooltip {
+    display: block; /* Show tooltip on hover */
+}
+
+
