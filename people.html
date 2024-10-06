@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Involved</title>
+    <style>
+        body {
+            font-family:  sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-start; /* Align content to the left */
+            background-image: url('./image/man-stare-staring-sky.jpg');
+            background-size: cover; /* Cover the entire viewport */
+            padding: 20px; /* Add some padding */
+        }
+
+        h1 {
+            font-size: 5rem;
+            color: rgb(190, 191, 196); /* Change text color for visibility */
+            text-align: left; /* Align text to the left */
+            margin: 0;
+            padding: 20px; /* Add some padding around the text */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better visibility against background */
+        }
+
+        .icon-container {
+            display: flex; /* Flex container for icons */
+            gap: 20px; /* Space between icons */
+            margin-top: 20px; /* Space above icons */
+        }
+
+        .icon {
+            width: 80px; /* Width of the icon */
+            height: 80px; /* Height of the icon */
+            cursor: pointer; /* Pointer cursor on hover */
+            border: 2px solid rgba(108, 0, 0, 0.7); /* Border for icon */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden; /* Hide overflow */
+            transition: transform 0.2s; /* Transition effect on hover */
+        }
+
+        .icon:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .image-display {
+            display: none; /* Hide by default */
+            margin-top: 20px; /* Space above the displayed image */
+            text-align: center; /* Center the text */
+        }
+
+        .image-display img {
+            width: 300px; /* Set image width */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .image-display p {
+            color: white; /* Text color */
+            margin-top: 10px; /* Space above the text */
+        }
+    </style>
+</head>
+<body>
+    <h1>People Involved</h1>
+
+    <div class="icon-container">
+        <div class="icon" onclick="showDetails('icon1')">
+            <img src="image/kepler.jpg" alt="Icon 1" />
+        </div>
+        <div class="icon" onclick="showDetails('icon2')">
+            <img src="./image/kepler.jpg" alt="Icon 2" />
+        </div>
+        <div class="icon" onclick="showDetails('icon3')">
+            <img src="./image/kepler.jpg" alt="Icon 3" />
+        </div>
+        <div class="icon" onclick="showDetails('icon4')">
+            <img src="./image/kepler.jpg"" alt="Icon 4" />
+        </div>
+    </div>
+
+    <div id="image-display" class="image-display">
+        <img id="display-image" src="" alt="Displayed Image" />
+        <p id="display-text"></p>
+    </div>
+
+    <script>
+        function showDetails(icon) {
+            var displayImage = document.getElementById('display-image');
+            var displayText = document.getElementById('display-text');
+            var imageDisplay = document.getElementById('image-display');
+
+            switch (icon) {
+                case 'icon1':
+                    displayImage.src = 'https://science.nasa.gov/wp-content/uploads/2023/07/webb-peoplecolonknicoleheadshot.jpg?w=1536&format=webp'; // Image for Icon 1
+                    displayText.innerText = 'Dr. Knicole Colón is an Astrophysicist at NASA’s Goddard Space Flight Center in Greenbelt, MD. She is the James Webb Space Telescope Operations Project Scientist. Colón also serves as the Project Scientist for the Pandora SmallSat mission. She previously served as the Deputy Operations Project Scientist for the Hubble Space Telescope and the Project Scientist for the Transiting Exoplanet Survey Satellite (TESS).';
+                    break;
+                case 'icon2':
+                    displayImage.src = 'https://science.nasa.gov/wp-content/uploads/2023/07/Calvin_Kate_Candid_1280.jpg?w=1536&format=webp'; // Image for Icon 2
+                    displayText.innerText = 'Dr. Kate Calvin is the first person to serve in the dual role of NASA’s Chief Scientist and Senior Climate Advisor.My job is to connect the science within the agency and communicate NASA science broadly to NASA leadership, other agencies, scientists, and the public..';
+                    break;
+                case 'icon3':
+                    displayImage.src = 'data:image/jpeg;base64,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'; // Replace with actual image URL for Icon 3
+                    displayText.innerText = 'In 1992, astronomers Aleksander Wolszczan and Dale Frail discovered the first planets outside of our solar system Lich A rocky planet with a mass 4.3 times that of EarthPoltergeist: A planet that orbits Lich with a period of 66 daysPhobetor: A planet that orbits Lich with a period of 98 days';
+                    break;
+                case 'icon4':
+                    displayImage.src = 'data:image/webp;base64,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'; // Replace with actual image URL for Icon 4
+                    displayText.innerText = 'In 1995, these Swiss scientists discovered the first exoplanet to orbit a star similar to our Sun. They were awarded the 2019 Nobel Prize in Physics for their discovery';
+                    break;
+            }
+
+            imageDisplay.style.display = 'block'; // Show the image display
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

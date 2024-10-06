@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exoplanet Discoveries</title>
+    <style><!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Discoveries of Exoplanets</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                    margin: 0;
+                    padding: 20px;
+                }
+                .section {
+                    margin-bottom: 50px;
+                    text-align: center;
+                }
+                h1 {
+                    font-size: 2.5em;
+                    color: #333;
+                }
+                p {
+                    font-size: 1.2em;
+                    color: #555;
+                }
+                .image-container {
+                    position: relative;
+                    height: 300px;
+                    margin: 20px 0;
+                    opacity: 0;
+                    transition: opacity 1s;
+                }
+                .image-container img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            </style>
+        </head>
+        <body>
+        
+            <div class="section">
+                <h1>DISCOVERIES</h1>
+                <p>Explore the fascinating discoveries of exoplanets that challenge our understanding of the universe.</p>
+                
+                <div class="image-container" id="img1">
+                    <img src="image/immmm.jpg" alt="Exoplanet 1">
+                    <p>Nancy Grace Roman Space Telescope: Set to launch by May 2027, this telescope will study exoplanets using techniques like direct imaging and gravitational microlensing. It is designed to deliver a significant amount of data, making it possible for both professional scientists and citizen scientists to engage in exoplanet research</p>
+                </div>
+                
+                <div class="image-container" id="img2">
+                    <img src="image/immmm.jpg" alt="Exoplanet 2">
+                    <p>Habitable Worlds Observatory: This mission will aim to directly image stars in our solar neighborhood, searching for potentially habitable planets and analyzing their atmospheres. Like Roman, this observatory is also embracing citizen science, allowing public involvement in data analysis and decision-making​(
+                    </p>
+                </div>
+                
+                <div class="image-container" id="img3">
+                    <img src="exoplanet3.jpg" alt="Exoplanet 3">
+                    <p>Citizen Science Initiatives: NASA has a history of involving the public in its exoplanet research. Programs like Exoplanet Watch allow individuals to contribute to the discovery of new exoplanets by gathering and submitting observational data. This approach has been successful in the past with missions like Kepler and TESS, which made their data publicly available​</p>
+                </div>
+                
+                <div class="image-container" id="img4">
+                    <img src="exoplanet4.jpg" alt="Exoplanet 4">
+                    <p>Exploration of Exoplanet Types: Current research includes characterizing various types of exoplanets, from rocky planets similar to Earth to gas giants and water-dominated worlds. The ability to measure these planets’ sizes and masses helps scientists understand their compositions and the potential for habitability</p>
+                </div>
+            </div>
+        
+            <script>
+                window.addEventListener('scroll', () => {
+                    const images = document.querySelectorAll('.image-container');
+                    const windowHeight = window.innerHeight;
+        
+                    images.forEach(image => {
+                        const rect = image.getBoundingClientRect();
+                        if (rect.top < windowHeight) {
+                            image.style.opacity = 1;
+                        }
+                    });
+                });
+            </script>
+        </body>
+        </html>
+        
+       
+    </style>
+</head>
+<body>
+
+</body>
+</html>
