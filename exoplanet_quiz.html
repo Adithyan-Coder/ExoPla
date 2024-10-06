@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exoplanet Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("C:\\Users\\hp\\Downloads\\clear sky.png"); /* Add your background image here */
+            background-size: cover; /* Cover the entire page */
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0; /* Remove default margin */
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the heading */
+            font-size: 2.5em; /* Larger font size for the heading */
+            color: #fff; /* White color for the heading */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a shadow for better readability */
+        }
+        #quiz-container {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-top: 50px; /* Space above the quiz box */
+            width: 100%; /* Responsive width */
+            max-width: 600px; /* Max width for the quiz box */
+        }
+        .option, .exit-replay {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1em; /* Adjust font size for options */
+            width: 100%; /* Full width for buttons */
+        }
+        .option:hover, .exit-replay:hover {
+            background-color: #d0d0d0;
+        }
+        #feedback {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Exoplanet Quiz</h1> <!-- Separated heading -->
+
+<div id="quiz-container">
+    <div id="question-container"></div>
+    <div id="options-container"></div>
+    <div id="feedback"></div>
+    <div id="score-container"></div>
+</div>
+
+<script>
+    const planets = {
+        "Proxima Centauri b": [
+            {
+                question: "When was Proxima Centauri b discovered?",
+                options: ["2016", "2015", "2017", "2009"],
+                answer: "2016"
+            },
+            {
+                question: "What is Proxima Centauri b's relation to Proxima Centauri?",
+                options: ["It is a moon", "It is a planet", "It orbits the star", "It is a star itself"],
+                answer: "It orbits the star"
+            },
+            {
+                question: "What makes Proxima Centauri b a prime candidate for further study?",
+                options: ["It is the largest exoplanet", "It lies within the habitable zone", "It orbits a gas giant", "It has no atmosphere"],
+                answer: "It lies within the habitable zone"
+            }
+        ],
+        "Kepler-22b": [
+            {
+                question: "In what year was Kepler-22b discovered?",
+                options: ["2009", "2010", "2011", "2012"],
+                answer: "2009"
+            },
+            {
+                question: "How many times the size of Earth is Kepler-22b?",
+                options: ["1.5", "2.0", "2.4", "3.0"],
+                answer: "2.4"
+            },
+            {
+                question: "What feature of Kepler-22b makes it a significant target for study?",
+                options: ["It orbits a gas giant", "It has extreme temperatures", "It is located in the habitable zone", "It has no atmosphere"],
+                answer: "It is located in the habitable zone"
+            }
+        ],
+        "TRAPPIST-1 System": [
+            {
+                question: "What type of star is TRAPPIST-1?",
+                options: ["Red dwarf", "Yellow dwarf", "Blue giant", "White dwarf"],
+                answer: "Red dwarf"
+            },
+            {
+                question: "How many rocky planets are in the TRAPPIST-1 system?",
+                options: ["5", "6", "7", "8"],
+                answer: "7"
+            },
+            {
+                question: "How far is the TRAPPIST-1 system from Earth?",
+                options: ["10 light-years", "20 light-years", "30 light-years", "40 light-years"],
+                answer: "40 light-years"
+            }
+        ],
+        "Osiris": [
+            {
+                question: "What is Osiris known for?",
+                options: ["Its large size", "Its unique features", "Its gas composition", "Its distance from Earth"],
+                answer: "Its unique features"
+            },
+            {
+                question: "Where does Osiris orbit?",
+                options: ["Within the habitable zone", "Far from its star", "Around a black hole", "In the asteroid belt"],
+                answer: "Within the habitable zone"
+            },
+            {
+                question: "What potential conditions might Osiris have?",
+                options: ["Rocky composition and atmosphere", "Gas giant characteristics", "Frozen surface", "No atmosphere"],
+                answer: "Rocky composition and atmosphere"
+            }
+        ]
+    };
+
+    const planetNames = Object.keys(planets);
+    let currentPlanetIndex = 0;
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function showQuestion() {
+        const planet = planetNames[currentPlanetIndex];
+        const questionContainer = document.getElementById("question-container");
+        const optionsContainer = document.getElementById("options-container");
+        const feedbackContainer = document.getElementById("feedback");
+
+        // Clear previous content
+        questionContainer.innerHTML = "";
+        optionsContainer.innerHTML = "";
+        feedbackContainer.innerHTML = ""; // Clear previous feedback
+
+        const question = planets[planet][currentQuestionIndex].question;
+        questionContainer.innerHTML = `<p>${question}</p>`;
+
+        // Add answer options
+        planets[planet][currentQuestionIndex].options.forEach(option => {
+            const button = document.createElement("button");
+            button.innerText = option;
+            button.className = "option";
+            button.onclick = () => checkAnswer(option);
+            optionsContainer.appendChild(button);
+        });
+    }
+
+    function checkAnswer(selectedOption) {
+        const planet = planetNames[currentPlanetIndex];
+        const correctAnswer = planets[planet][currentQuestionIndex].answer;
+
+        if (selectedOption === correctAnswer) {
+            handleCorrectAnswer();
+        } else {
+            handleIncorrectAnswer(correctAnswer);
+        }
+
+        // Move to the next question after a short delay
+        setTimeout(() => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < planets[planetNames[currentPlanetIndex]].length) {
+                showQuestion();
+            } else {
+                currentPlanetIndex++;
+                currentQuestionIndex = 0;
+
+                if (currentPlanetIndex < planetNames.length) {
+                    showQuestion();
+                } else {
+                    endQuiz();
+                }
+            }
+        }, 1500); // 1.5 seconds delay for feedback visibility
+    }
+
+    function handleCorrectAnswer() {
+        score++;
+        updateFeedback("Correct!", "green");
+    }
+
+    function handleIncorrectAnswer(correctAnswer) {
+        updateFeedback(`Incorrect. The correct answer is: ${correctAnswer}`, "red");
+    }
+
+    function updateFeedback(message, color) {
+        const feedbackContainer = document.getElementById("feedback");
+        feedbackContainer.innerText = message;
+        feedbackContainer.style.color = color; // Change text color based on answer
+    }
+
+    function endQuiz() {
+        const questionContainer = document.getElementById("question-container");
+        const optionsContainer = document.getElementById("options-container");
+        //const feedbackContainer = document.getElementById("feedback");
+        
+        // Clear previous content and show the final score
+        questionContainer.innerHTML = `<h2>Quiz Over!</h2><p>Your score: ${score} out of ${planetNames.length * planets[planetNames[0]].length}</p>`;
+        optionsContainer.innerHTML = "";
+
+        // Create Exit and Replay buttons
+        const replayButton = document.createElement("button");
+        replayButton.innerText = "Replay";
+        replayButton.className = "exit-replay";
+        replayButton.onclick = replayQuiz;
+        
+        const exitButton = document.createElement("button");
+        exitButton.innerText = "Exit";
+        exitButton.className = "exit-replay";
+        exitButton.onclick = exitQuiz;
+
+        optionsContainer.appendChild(replayButton);
+        optionsContainer.appendChild(exitButton);
+    }
+
+    function replayQuiz() {
+        score = 0;
+        currentPlanetIndex = 0;
+        currentQuestionIndex = 0;
+        document.getElementById("feedback").innerHTML = ""; // Clear feedback
+        showQuestion();
+    }
+
+    function exitQuiz() {
+        // You can redirect to a different page or refresh the current page
+        window.location.reload(); // Refresh the page to exit the quiz
+    }
+
+    // Start the quiz
+    showQuestion();
+</script>
+
+</body>
+</html>
